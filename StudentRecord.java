@@ -2,7 +2,6 @@ public class StudentRecord
 {
    //contains scores.length values and scores.length > 1
    private int [] scores;
-   
    //Constructs a StudentRecord object with an array of scores.
    public StudentRecord(int [] s)
    {
@@ -28,27 +27,45 @@ public class StudentRecord
    /** returns true if each successive value in scores is greater than
     *  or equal to the previous value; false otherwise.
     */
-   private boolean hasImproved()
+   public boolean hasImproved()
    {
-       int currentNum=scores[0];
        boolean stillTrue=true;
+       int x = 1;
+       int y = scores.length;
        while(stillTrue==true)
            {
-               for(int x=0;x<=scores.length-1;x++)
+               for(x=1;x<=y-1;x++)
                    {
-                       if(scores[x]>=scores[x-1]);
+                       if(scores[x]>=scores[x-1])
                            {
+                               if(x<scores.length-1)
+                                   {
                                stillTrue=true;
+                               System.out.println(y);
+                               System.out.println(x);
+                               System.out.println("stuck on true");
+                                }
+                               else
+                                    {
+                                        stillTrue=false;
+                                    }    
                            }
                        else
                            {
-                               stillTrue=false
-                           }    
+                               stillTrue=false;
+                               System.out.println("stuck on false");
+                           }
                    }
-               
            }
-        
-       return false; //here so the class compiles
+       if(stillTrue==true)
+           {
+               return true;
+           }
+       else
+           {
+               return false;
+           }    
+       //here so the class compiles
    }  
    
    /** if the values in scores have imrpoved, returns the average of

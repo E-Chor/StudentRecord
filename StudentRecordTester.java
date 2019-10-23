@@ -18,6 +18,13 @@ public class StudentRecordTester
         sr [0] = new StudentRecord(a);
         sr [1] = new StudentRecord(b);
         sr [2] = new StudentRecord(c);
+        
+        System.out.println (sr [0].hasImproved());
+        System.out.println (sr [1].hasImproved());
+        System.out.println (sr [2].hasImproved());
+        
+        
+        
     }
     
 }

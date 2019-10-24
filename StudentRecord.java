@@ -27,37 +27,21 @@ public class StudentRecord
    /** returns true if each successive value in scores is greater than
     *  or equal to the previous value; false otherwise.
     */
-   public boolean hasImproved()
+   private boolean hasImproved()
    {
-       boolean stillTrue=true;
-       int x = 1;
-       int y = scores.length;
-       while(stillTrue==true)
+       int perfectStreak=0;
+       for(int x=0;x<scores.length-1;x++)
            {
-               for(x=1;x<=y-1;x++)
+               if(scores[x]<=scores[x+1])
                    {
-                       if(scores[x]>=scores[x-1])
-                           {
-                               if(x<scores.length-1)
-                                   {
-                               stillTrue=true;
-                               System.out.println(y);
-                               System.out.println(x);
-                               System.out.println("stuck on true");
-                                }
-                               else
-                                    {
-                                        stillTrue=false;
-                                    }    
-                           }
-                       else
-                           {
-                               stillTrue=false;
-                               System.out.println("stuck on false");
-                           }
+                     perfectStreak=perfectStreak+1; 
+                   }
+               else
+                   {
+                     perfectStreak=perfectStreak-1;
                    }
            }
-       if(stillTrue==true)
+       if(perfectStreak==scores.length-1)
            {
                return true;
            }
@@ -75,6 +59,14 @@ public class StudentRecord
     */
    public double finalAverage()
    {
-      return 0; //here so the class compiles
+       double sum=0;
+       if(hasImproved()==true)
+           {
+               return average(scores.length/2,scores.length-1);
+           }        
+       else
+           {
+               return average(0,scores.length-1);
+           }
    } 
 }
